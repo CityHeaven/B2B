@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiane.org.ssm.dao.BizStockMapper">
+  <resultMap id="BaseResultMap" type="tiane.org.ssm.entity.BizStock">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="flight_no" jdbcType="VARCHAR" property="flightNo" />
+    <result column="airline" jdbcType="VARCHAR" property="airline" />
+    <result column="flight_type" jdbcType="VARCHAR" property="flightType" />
+    <result column="src_point" jdbcType="VARCHAR" property="srcPoint" />
+    <result column="dst_point" jdbcType="VARCHAR" property="dstPoint" />
+    <result column="src_airport" jdbcType="VARCHAR" property="srcAirport" />
+    <result column="dst_airport" jdbcType="VARCHAR" property="dstAirport" />
+    <result column="trip_days" jdbcType="INTEGER" property="tripDays" />
+    <result column="book_days" jdbcType="INTEGER" property="bookDays" />
+    <result column="draw_days" jdbcType="INTEGER" property="drawDays" />
+    <result column="model_plane" jdbcType="VARCHAR" property="modelPlane" />
+    <result column="baggage_allowance" jdbcType="VARCHAR" property="baggageAllowance" />
+    <result column="number_seats" jdbcType="INTEGER" property="numberSeats" />
+    <result column="departure_time" jdbcType="VARCHAR" property="departureTime" />
+    <result column="arrival_time" jdbcType="VARCHAR" property="arrivalTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="schedule" jdbcType="VARCHAR" property="schedule" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+
+    <result column="cadf" jdbcType="DOUBLE" property="cadf" />
+    <result column="outbound_cadf" jdbcType="DOUBLE" property="outboundCadf" />
+    <result column="inbound_cadf" jdbcType="DOUBLE" property="inboundCadf" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, flight_no, airline, flight_type, src_point, dst_point, src_airport, dst_airport, 
+    trip_days, book_days, draw_days, model_plane, baggage_allowance, number_seats, departure_time, 
+    arrival_time, `status`, start_time, finish_time, group_id, schedule, created_by, 
+    created_time, updated_by, updated_time, inbound_cadf,outbound_cadf,cadf, price
+  </sql>
+
+</mapper>

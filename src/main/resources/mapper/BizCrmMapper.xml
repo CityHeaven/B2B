@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiane.org.ssm.dao.BizCrmMapper">
+  <resultMap id="BaseResultMap" type="tiane.org.ssm.entity.BizCrm">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="birth_date" jdbcType="TIMESTAMP" property="birthDate" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="points" jdbcType="INTEGER" property="points" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `name`, gender, `type`, contact, nationality, birth_date, remarks, points
+  </sql>
+</mapper>

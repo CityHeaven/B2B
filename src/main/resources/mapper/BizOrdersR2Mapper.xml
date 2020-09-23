@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiane.org.ssm.dao.BizOrdersR2Mapper">
+  <resultMap id="BaseResultMap" type="tiane.org.ssm.entity.BizOrdersR2">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
+    <result column="airline_opt_date" jdbcType="TIMESTAMP" property="airlineOptDate" />
+    <result column="flight_date" jdbcType="TIMESTAMP" property="flightDate" />
+    <result column="passenger" jdbcType="VARCHAR" property="passenger" />
+    <result column="passenger_type" jdbcType="VARCHAR" property="passengerType" />
+    <result column="credential" jdbcType="VARCHAR" property="credential" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="flight_segment" jdbcType="VARCHAR" property="flightSegment" />
+    <result column="flight_no" jdbcType="VARCHAR" property="flightNo" />
+    <result column="sales_channel" jdbcType="VARCHAR" property="salesChannel" />
+    <result column="income_amount" jdbcType="DOUBLE" property="incomeAmount" />
+    <result column="change_fee" jdbcType="DOUBLE" property="changeFee" />
+    <result column="agent_fee" jdbcType="DOUBLE" property="agentFee" />
+    <result column="sale_price" jdbcType="DOUBLE" property="salePrice" />
+    <result column="fare" jdbcType="DOUBLE" property="fare" />
+    <result column="cadf" jdbcType="DOUBLE" property="cadf" />
+    <result column="payment" jdbcType="VARCHAR" property="payment" />
+    <result column="pnr" jdbcType="VARCHAR" property="pnr" />
+    <result column="ticket_no" jdbcType="VARCHAR" property="ticketNo" />
+    <result column="ticket_status" jdbcType="VARCHAR" property="ticketStatus" />
+    <result column="flight_itinerary" jdbcType="VARCHAR" property="flightItinerary" />
+    <result column="is_void" jdbcType="VARCHAR" property="isVoid" />
+    <result column="outbound_cadf" jdbcType="DOUBLE" property="outboundCadf" />
+    <result column="inbound_cadf" jdbcType="DOUBLE" property="inboundCadf" />
+    <result column="sales_company" jdbcType="VARCHAR" property="salesCompany" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="confirm_refund_date" jdbcType="TIMESTAMP" property="confirmRefundDate" />
+    <result column="single_reduce_date" jdbcType="TIMESTAMP" property="singleReduceDate" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="input_mode" jdbcType="INTEGER" property="inputMode" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, order_type, product_id, order_date, airline_opt_date, flight_date, 
+    passenger, passenger_type, credential, contact, flight_segment, flight_no, sales_channel, 
+    income_amount, change_fee, agent_fee, sale_price, fare, cadf, payment, pnr, ticket_no, 
+    ticket_status, flight_itinerary, is_void, outbound_cadf, inbound_cadf,
+    sales_company, remarks, confirm_refund_date, single_reduce_date, del_flag, created_by, 
+    created_time, updated_by, updated_time, order_status,input_mode
+  </sql>
+  <select id="selectMyPage" resultType="tiane.org.ssm.entity.BizOrdersR2">
+    SELECT
+    DISTINCT a.*
+    FROM
+    biz_orders_r2 AS a
+    Right JOIN biz_stock ON biz_stock.flight_no = a.flight_no
+    Right JOIN biz_schedule On biz_schedule.ivt_id = biz_stock.id
+    Right JOIN biz_goods ON biz_goods.invs_id = biz_schedule.id
+    Right JOIN biz_agency ba on a.sales_company = ba.company
+    WHERE
+        a.created_time = ( SELECT max( b.created_time ) FROM biz_orders_r2 AS b WHERE a.order_id = b.order_id ) AND ba.id = #{userId}
+    AND a.input_mode = 0
+    <if test="orderStartDate != null and orderStartDate != '' and orderEndDate != null and orderEndDate != ''">
+      AND a.order_date BETWEEN #{orderStartDate} and #{orderEndDate}
+    </if>
+    <if test="flightStartDate != null and flightStartDate != '' and flightEndDate != null and flightEndDate != ''">
+      AND biz_schedule.flight_date BETWEEN #{flightStartDate} and #{flightEndDate}
+    </if>
+    <if test="orderCode != null and orderCode != ''">
+      AND a.order_id = #{orderCode}
+    </if>
+    <if test="ticketCode != null and ticketCode != ''">
+      AND a.ticket_no = #{ticketCode}
+    </if>
+    <if test="passenger != null and passenger != ''">
+      AND a.passenger = #{passenger}
+    </if>
+    <if test="fligetSegment != null and fligetSegment != ''">
+      AND a.flight_segment = #{fligetSegment}
+
+    </if>
+    <if test="orderType != null and orderType != ''">
+      AND a.order_type = #{orderType}
+    </if>
+    <if test="orderStatus != null and orderStatus != ''">
+      AND a.order_status = #{orderStatus}
+    </if>
+    <if test="ticketStatus != null and ticketStatus != ''">
+      AND a.ticket_status = #{ticketStatus}
+    </if>
+    <if test="pnr != null and pnr != ''">
+      AND a.pnr = #{pnr}
+    </if>
+    <if test="flightType != null and flightType != ''">
+      AND biz_stock.flight_type = #{flightType}
+    </if>
+    <if test="salesTarget != null and salesTarget != ''">
+      AND biz_goods.sales_target = #{salesTarget}
+    </if>
+  </select>
+
+</mapper>

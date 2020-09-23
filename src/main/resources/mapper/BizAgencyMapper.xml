@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiane.org.ssm.dao.BizAgencyMapper">
+  <resultMap id="BaseResultMap" type="tiane.org.ssm.entity.BizAgency">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company, parent_id, `name`, `password`, country, city, address, contact, tel, del_flag,
+    remarks
+  </sql>
+</mapper>

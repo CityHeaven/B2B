@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: ssm #服务名
+  profiles:
+    active: pro
+  datasource: # 数据库配置
+    driver-class-name: com.mysql.jdbc.Driver
+    username: swan
+    password: 778899@swan
+    url: jdbc:mysql://rm-2ze82g8f180ie5285.mysql.rds.aliyuncs.com:3306/db_ticket_tst?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    type: com.alibaba.druid.pool.DruidDataSource
+  mybatis-plus:
+    global-config:
+      db-config:
+        id-Type: none
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      jdbc-type-for-null: null
+      call-setters-on-nulls: true
+    mapper-locations: classpath:mapper/*Mapper.xml
+shiro:
+  loginUrl: /login

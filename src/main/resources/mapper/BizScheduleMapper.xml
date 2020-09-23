@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiane.org.ssm.dao.BizScheduleMapper">
+  <resultMap id="BaseResultMap" type="tiane.org.ssm.entity.BizSchedule">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="ivt_id" jdbcType="VARCHAR" property="ivtId" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="flight_date" jdbcType="TIMESTAMP" property="flightDate" />
+    <result column="stock_total" jdbcType="INTEGER" property="stockTotal" />
+    <result column="product_quantity" jdbcType="INTEGER" property="productQuantity" />
+    <result column="stock_surplus" jdbcType="INTEGER" property="stockSurplus" />
+    <result column="sale_quantity" jdbcType="INTEGER" property="saleQuantity" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ivt_id, group_id, flight_date, stock_total, product_quantity, stock_surplus, 
+    sale_quantity, `status`, remarks, created_by, created_time, updated_by, updated_time
+  </sql>
+<!--  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from biz_inventory_schedule-->
+<!--    where id = #{id,jdbcType=VARCHAR}-->
+<!--  </select>-->
+</mapper>

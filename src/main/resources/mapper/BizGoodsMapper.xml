@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tiane.org.ssm.dao.BizGoodsMapper">
+  <resultMap id="BaseResultMap" type="tiane.org.ssm.entity.BizGoods">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="sales_channel" jdbcType="VARCHAR" property="salesChannel" />
+    <result column="number_seats" jdbcType="INTEGER" property="numberSeats" />
+    <result column="sale_quantity" jdbcType="INTEGER" property="saleQuantity" />
+    <result column="number_surplus" jdbcType="INTEGER" property="numberSurplus" />
+    <result column="sale_price" jdbcType="DOUBLE" property="salePrice" />
+    <result column="tax" jdbcType="DOUBLE" property="tax" />
+    <result column="agency_fees" jdbcType="DOUBLE" property="agencyFees" />
+    <result column="inv_id" jdbcType="VARCHAR" property="invId" />
+    <result column="invs_id" jdbcType="VARCHAR" property="invsId" />
+    <result column="sale_date" jdbcType="TIMESTAMP" property="saleDate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="refund_rule" jdbcType="VARCHAR" property="refundRule" />
+    <result column="sales_target" jdbcType="VARCHAR" property="salesTarget" />
+    <result column="payment_timeout" jdbcType="INTEGER" property="paymentTimeout" />
+    <result column="cabin" jdbcType="VARCHAR" property="cabin" />
+    <result column="refund_rule_details" jdbcType="VARCHAR" property="refundRuleDetails" />
+  </resultMap>
+</mapper>
